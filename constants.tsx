@@ -1,48 +1,49 @@
 
 import React from 'react';
-import { ServicePlan, HostingOption, Addon } from './types';
+import { ServicePlan, Addon } from './types';
 
 export const PLANS: ServicePlan[] = [
   {
     id: 'express',
     name: 'Plan Express',
-    description: 'Perfecto para darle vida a tu Airbnb, estudio o apartamento modelo. ¡Rapidez y calidad para que empieces a recibir huéspedes ya!',
+    description: 'La opción ideal para que su Airbnb o apartamento destaque. Diseñado para maximizar clics y asegurar reservas inmediatas.',
     features: [
       'Ideal para espacios de hasta 60 m²',
-      'Listo en solo 24 Horas',
-      'Recorrido 3D fluido y detallado',
-      '2 meses de alojamiento gratis',
-      '🎁 Eliges un regalo: Fotos HDR, Planos o Street View'
+      'Aumente sus visitas digitales en un 300%',
+      'Recorrido fluido de alta definición',
+      '2 meses de visualización premium incluidos',
+      '🎁 PROMO: 2 meses adicionales de hosting gratis (Válido hasta el 31 Marzo)'
     ],
     price: 290000,
     maxArea: 60
   },
   {
     id: 'inmobiliario',
-    name: 'Plan Inmobiliario',
-    description: 'Nuestra opción más querida. La "Vista Dollhouse" ayudará a tus clientes a enamorarse de la distribución de su futuro hogar.',
+    name: 'Plan Inmobiliario Pro',
+    description: 'Acelere la venta de su propiedad. Evite visitas innecesarias filtrando solo a clientes realmente interesados que ya conocen el espacio.',
     features: [
-      'Para casas y aptos hasta 160 m²',
-      'Increíble Vista Dollhouse (Maqueta 3D)',
-      'Entrega en 48 Horas',
+      'Perfecto para hogares de hasta 160 m²',
+      'Vista de Maqueta 3D (Entendimiento total)',
+      'Filtre clientes: Menos paseos, más cierres',
       '6 meses de alojamiento incluidos',
-      '🚁 Tip: Si pagas antes, te regalamos la Toma con Dron',
-      '🎁 Si pagas al recibir, eliges un Addon Digital gratis'
+      '🚁 REGALO: Si realiza pago anticipado, ¡Toma con Dron incluida!',
+      '🎁 PROMO: Si paga al final, le obsequiamos un Addon Digital'
     ],
     price: 570000,
     maxArea: 160,
     popular: true,
   },
   {
-    id: 'business',
-    name: 'Business / Comercial',
-    description: 'Haz que tu negocio destaque. Tus clientes podrán explorar tu local y conocer tus productos con etiquetas interactivas.',
+    id: 'commercial',
+    name: 'Plan Commercial',
+    description: 'Convierta su local en un destino digital. Permita que sus clientes exploren su marca y productos desde cualquier lugar del mundo.',
     features: [
-      'Espacios amplios hasta 360 m²',
-      'Etiquetas interactivas (Mattertags)',
+      'Para locales comerciales de hasta 360 m²',
+      'Etiquetas interactivas de productos/servicios',
       'Incluye Toma con Dron profesional',
-      'Incluye 10 Fotos HDR de revista',
-      'Entrega en 72 Horas',
+      'Incluye 10 Fotos HDR de alta calidad',
+      'Incluye Google Street View (Oficial)',
+      'Incluye Planos de Planta (2D) detallados',
       '12 meses de alojamiento incluidos'
     ],
     price: 900000,
@@ -50,14 +51,14 @@ export const PLANS: ServicePlan[] = [
   },
   {
     id: 'corporativo',
-    name: 'Corporativo / Enterprise',
-    description: 'Proyectos a gran escala como hoteles, museos o bodegas. Diseñamos una solución a la medida de tus necesidades.',
+    name: 'Proyectos Especiales',
+    description: 'Hoteles y centros comerciales. Soluciones de visualización masiva para proyectos que requieren un impacto visual sin precedentes.',
     features: [
-      'Para grandes espacios (+360 m²)',
-      'Visitemos el lugar para planear todo',
-      'Atención y soporte prioritario',
-      'Personalización absoluta de cada rincón',
-      'Formatos técnicos (BIM/Revit) disponibles'
+      'Para grandes superficies (+360 m²)',
+      'Recorridos de alta fidelidad para inversores',
+      'Soporte corporativo y personalización total',
+      'Ideal para preventas en el sector lujo',
+      'Visualización de espacios complejos'
     ],
     price: 0, 
     maxArea: 9999
@@ -65,53 +66,59 @@ export const PLANS: ServicePlan[] = [
 ];
 
 export const ADDONS: Addon[] = [
-  { name: 'Fotos HDR (5)', price: 100000, description: 'Fotos en alta resolución que parecen sacadas de una revista.' },
-  { name: 'Planos 2D', price: 80000, description: 'Un mapa claro y medido de tu propiedad para mayor seguridad.' },
-  { name: 'Google Street View', price: 150000, description: 'Pon tu negocio en el mapa y mejora tu visibilidad en Google.' },
-  { name: 'Toma con Dron', price: 180000, description: 'Captura la mejor perspectiva aérea de la ubicación.' },
-  { name: 'Video Walkthrough 4K', price: 120000, description: 'Un video dinámico ideal para lucirte en Instagram o TikTok.' },
-  { name: 'Archivo BIM (Revit)', price: 0, description: 'Información técnica valiosa para arquitectos e ingenieros.' }
+  { name: 'Fotos HDR (10)', price: 100000, description: 'Pack de 10 fotografías profesionales para portales inmobiliarios.' },
+  { name: 'Planos de Planta', price: 80000, description: 'Mapa detallado con medidas. A partir de $80K COP.' },
+  { name: 'Desmueblar', price: 20000, description: 'Limpieza digital de mobiliario para mostrar el espacio vacío.' },
+  { name: 'Recorrido Vrbo 360', price: 20000, description: 'Publicación oficial de tour virtual en Vrbo y Expedia.' },
+  { name: 'Google Street View', price: 150000, description: 'Integre su negocio directamente en el mapa de Google.' },
+  { name: 'Toma con Dron', price: 180000, description: 'Perspectiva aérea para resaltar ubicación y zonas comunes.' },
+  { name: 'Recorrido de Video 4K', price: 140000, description: 'Video walkthrough ideal para reels y redes sociales.' },
+  { name: 'Archivo CAD (.DWG)', price: 120000, description: 'Plano técnico editable para arquitectos e ingenieros.' },
+  { name: 'Archivo BIM', price: 0, description: 'de Matterport. Transforme sus datos en modelos .RVT y .DWG LOD 200.' },
+  { name: 'Mes de Hosting Extra', price: 20000, description: 'Mantenga su tour activo por más tiempo.' },
+  { name: 'APIs, Embed', price: 0, description: 'Integración avanzada en su sitio web corporativo.' },
+  { name: 'Badge Digital', price: 0, description: 'Sello de propiedad verificada (Aumenta confianza).' }
 ];
 
 export const PLATFORM_FEATURES = [
   {
-    title: 'Cero Riesgo 🛡️',
-    desc: 'Agenda con total tranquilidad. No cobramos nada por adelantado, pagas solo cuando el resultado te encante.'
+    title: 'Cero Riesgo, Total Confianza',
+    desc: 'Agende sin compromisos. No cobramos anticipos; usted solo paga cuando el resultado final supere sus expectativas.'
   },
   {
-    title: 'Experiencia Real',
-    desc: 'No son solo fotos, es la sensación de estar ahí. Ayudamos a que tus clientes sientan el espacio como suyo.'
+    title: 'Ventas en Piloto Automático',
+    desc: 'Su propiedad abierta al público las 24 horas del día. Reciba ofertas mientras usted se dedica a cerrar negocios.'
   },
   {
-    title: 'Ahorra Tiempo',
-    desc: 'Filtra a los curiosos. Quien agenda una visita física es porque ya conoce y ama el lugar digitalmente.'
+    title: 'Adiós a los Paseos Inútiles',
+    desc: 'Ahorre horas de tráfico y coordinación. Quien solicita una visita física ya está convencido por el tour virtual.'
   },
   {
-    title: 'Siempre Cerca',
-    desc: 'Somos tus vecinos en Medellín. Estamos listos para visitarte en Envigado, Sabaneta o cualquier rincón del Valle.'
+    title: 'Impacto Visual Superior',
+    desc: 'Diferénciese de la competencia con tecnología de visualización que hace que los espacios luzcan impecables.'
   }
 ];
 
 export const HOW_IT_WORKS = [
   {
     step: '01',
-    title: 'Agendamos Gratis',
-    desc: 'Nos ponemos de acuerdo y visitamos tu propiedad sin compromisos económicos iniciales.'
+    title: 'Cita de Captura',
+    desc: 'Visitamos su espacio y en tiempo récord capturamos cada rincón con tecnología de alta gama.'
   },
   {
     step: '02',
-    title: 'Hacemos la Magia',
-    desc: 'Llevamos nuestros equipos y capturamos cada rincón en un par de horas.'
+    title: 'Creación Digital',
+    desc: 'Procesamos los datos para crear una réplica digital perfecta y fluida de su propiedad.'
   },
   {
     step: '03',
-    title: 'Lo Preparamos',
-    desc: 'Nuestro equipo edita y procesa todo para que tu tour luzca espectacular.'
+    title: 'Revisión de Calidad',
+    desc: 'Usted recibe un enlace privado para validar que cada detalle luzca increíble.'
   },
   {
     step: '04',
-    title: 'Revisas y Pagas',
-    desc: 'Te mostramos cómo quedó. Si te gusta, realizas el pago y te entregamos tu activo digital.'
+    title: 'Lanzamiento y Venta',
+    desc: 'Una vez satisfecho, activa el servicio y empieza a recibir visitas de calidad mundial.'
   }
 ];
 

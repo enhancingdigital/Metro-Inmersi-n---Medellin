@@ -1,87 +1,145 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { WHATSAPP_NUMBER } from '../constants';
+import { Zap, X, ShieldCheck, Cpu, Camera, Maximize, CheckCircle2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const [isTechModalOpen, setIsTechModalOpen] = useState(false);
+
   const handleSpecialQuote = () => {
-    const msg = "Hola Metro Inmersión! 👋 Vi su sitio web y me interesa digitalizar un espacio. ¿Podemos hablar?";
+    const msg = "Hola Metro Virtual Tours! 👋 Me interesa vender mi propiedad más rápido con un tour virtual.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
-  const scrollToCalculator = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById('calculadora');
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+  const openTechModal = () => {
+    setIsTechModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const closeTechModal = () => {
+    setIsTechModalOpen(false);
+    document.body.style.overflow = 'unset';
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-24 px-6 overflow-hidden scanline">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#D9A036]/[0.02] border-l border-black/[0.03] -skew-x-12 transform translate-x-1/2"></div>
-      
-      <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
-        <div className="text-left">
-          <div className="text-[9px] font-black text-[#D9A036] uppercase tracking-[0.7em] mb-6">Tus espacios, ahora digitales</div>
-          <h1 className="text-6xl md:text-8xl lg:text-[8.5rem] font-black mb-8 leading-[0.8] tracking-tighter text-[#2D2D2D] uppercase">
-            Abre tus <br/>
-            <span className="text-[#D9A036] block mt-2">Puertas</span> 
-            <span className="text-[#2D2D2D]/60 text-5xl md:text-7xl block tracking-tight font-normal lowercase italic mt-4">al mundo entero.</span>
+    <section className="relative min-h-screen flex items-center pt-32 pb-16 overflow-hidden hero-mesh">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
+        
+        <div className="order-2 lg:order-1">
+          {/* Badge del Hero - AHORA ES UN TRIGGER DE MODAL */}
+          <button 
+            onClick={openTechModal}
+            className="relative inline-flex items-center gap-5 px-7 py-4 rounded-full bg-white/[0.03] border border-white/10 mb-10 group/hero-badge backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.4)] hover:bg-white/10 hover:border-[#4FB0B3]/40 transition-all duration-500 cursor-pointer outline-none"
+          >
+            {/* Shimmer effect interno */}
+            <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
+            </div>
+            
+            {/* Radar Dot Animation - Espaciado extra para evitar cortes */}
+            <div className="relative flex items-center justify-center w-6 h-6">
+              <span className="absolute w-8 h-8 rounded-full bg-[#4FB0B3]/20 animate-ping"></span>
+              <span className="relative w-3 h-3 rounded-full bg-[#4FB0B3] shadow-[0_0_15px_#4FB0B3] border border-white/30"></span>
+            </div>
+            
+            <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#4FB0B3] text-glow-teal flex items-center gap-2 relative z-10">
+              <Zap size={12} fill="currentColor" /> Visualización en Alta Definición
+            </span>
+          </button>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white uppercase">
+            Venda más <br/>
+            <span className="text-[#4FB0B3] text-glow-teal">Sin Esfuerzo</span> 
           </h1>
 
-          <div className="flex items-start gap-8 mb-12">
-            <div className="w-12 h-[1px] bg-[#D9A036] mt-2 shrink-0"></div>
-            <p className="mono text-[10px] font-black uppercase tracking-[0.4em] text-[#2D2D2D]/50 leading-loose">
-              Medellín • Envigado • Sabaneta<br/>
-              Tours Virtuales 3D Increíbles<br/>
-              Calidad que se siente
-            </p>
-          </div>
-          
-          <p className="text-xl md:text-2xl text-[#2D2D2D]/70 mb-14 max-w-xl font-medium leading-snug border-l-4 border-[#D9A036] pl-8">
-            Ayudamos a que tus clientes visiten tu propiedad sin salir de casa. Más cierres rápidos, menos visitas innecesarias y una imagen profesional impecable.
+          <p className="text-lg md:text-xl text-slate-400 mb-12 max-w-xl font-medium leading-relaxed border-l-4 border-[#FF7500] pl-8">
+            Filtre clientes reales y ahorre tiempo eliminando visitas innecesarias. Creamos virtual tours y gemelos digitales que cierran ventas por usted 24/7.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <a 
               href="#calculadora" 
-              onClick={scrollToCalculator}
-              className="w-full sm:w-auto bg-[#2D2D2D] text-[#F8F5F2] px-12 py-7 rounded-tight font-black text-[11px] uppercase tracking-[0.3em] hover:bg-[#D9A036] transition-all btn-shadow text-center"
+              className="w-full sm:w-auto btn-cyber px-12 py-6 rounded-full font-black text-[11px] uppercase tracking-[0.4em] text-center"
             >
-              Ver Precios
+              Cotizar Ahora
             </a>
             <button 
               onClick={handleSpecialQuote}
-              className="w-full sm:w-auto border border-[#2D2D2D]/20 text-[#2D2D2D] px-12 py-7 rounded-tight font-black text-[11px] uppercase tracking-[0.3em] hover:bg-[#2D2D2D] hover:text-white transition-all text-center"
+              className="w-full sm:w-auto bg-white/5 border border-white/20 text-white px-12 py-6 rounded-full font-black text-[11px] uppercase tracking-[0.4em] hover:bg-white/10 transition-all text-center"
             >
-              Hablemos por WhatsApp
+              Hablar con un Experto
             </button>
           </div>
         </div>
 
-        <div className="relative group hidden lg:block pr-8">
-          <div className="absolute inset-0 bg-[#D9A036]/5 transform translate-x-4 translate-y-4 -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6"></div>
-          <div className="p-1 border border-[#2D2D2D]/5 bg-white rounded-tight shadow-xl relative overflow-hidden">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-tight border border-black/5">
-               <img 
-                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" 
-                 className="w-full h-full object-cover grayscale-[0.1] contrast-[1.05] transition duration-700 group-hover:scale-105" 
-                 alt="Espacio Digitalizado" 
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
+        <div className="order-1 lg:order-2 relative group">
+          <div className="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-700 bg-slate-900">
+             <img 
+               src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200" 
+               alt="Tablet Interaction" 
+               className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+             />
+             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#4FB0B3]/20 blur-3xl rounded-full group-hover:bg-[#4FB0B3]/40 transition-all"></div>
           </div>
         </div>
       </div>
+
+      {/* MODAL TÉCNICO DE ALTA DEFINICIÓN */}
+      {isTechModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl animate-in fade-in duration-300">
+          <div className="relative w-full max-w-3xl bg-[#0F172A] border border-[#4FB0B3]/30 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(79,176,179,0.2)] animate-in zoom-in-95 duration-500">
+            
+            <button 
+              onClick={closeTechModal}
+              className="absolute top-8 right-8 z-[110] p-3 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all border border-white/10"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="p-10 md:p-16">
+               <div className="flex items-center gap-6 mb-12">
+                  <div className="w-16 h-16 bg-[#4FB0B3] text-white rounded-3xl flex items-center justify-center shadow-[0_0_30px_rgba(79,176,179,0.5)]">
+                     <Camera size={32} />
+                  </div>
+                  <div>
+                     <h4 className="text-[10px] font-black text-[#4FB0B3] uppercase tracking-[0.5em] mb-2">Estándar de Calidad</h4>
+                     <h3 className="text-white text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none">Captura Inmersiva 8K</h3>
+                  </div>
+               </div>
+
+               <div className="grid md:grid-cols-2 gap-6 mb-12">
+                  {[
+                    { icon: Maximize, title: "LIDAR de Precisión", desc: "Escaneo por nubes de puntos con 99% de exactitud métrica." },
+                    { icon: Cpu, title: "Renderizado Cloud", desc: "Procesamiento HDR inteligente para luces y sombras realistas." },
+                    { icon: ShieldCheck, title: "Activo Verificado", desc: "Gemelo digital compatible con portales premium mundiales." },
+                    { icon: Zap, title: "Carga Adaptativa", desc: "Visualización fluida incluso en conexiones móviles limitadas." }
+                  ].map((tech, i) => (
+                    <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5">
+                       <tech.icon className="text-[#4FB0B3] shrink-0" size={20} />
+                       <div>
+                          <h5 className="text-white text-[11px] font-black uppercase tracking-widest mb-1">{tech.title}</h5>
+                          <p className="text-slate-500 text-[10px] font-medium leading-relaxed uppercase">{tech.desc}</p>
+                       </div>
+                    </div>
+                  ))}
+               </div>
+
+               <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex items-center gap-3">
+                     <CheckCircle2 size={16} className="text-[#4FB0B3]" />
+                     <span className="text-slate-400 text-[9px] font-black uppercase tracking-[0.2em]">Tecnología Certificada Metro Tours</span>
+                  </div>
+                  <button 
+                    onClick={closeTechModal}
+                    className="w-full md:w-auto px-10 py-4 bg-[#4FB0B3] text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-[#3d8c8f] transition-all"
+                  >
+                    Entendido
+                  </button>
+               </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

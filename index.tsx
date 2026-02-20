@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
@@ -13,4 +12,4 @@ if (container) {
   );
 }
 
-console.log("Metro Inmersión: Application Rendered.");
+console.log("M² | Virtual Tours: Application Rendered.");
